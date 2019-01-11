@@ -1,10 +1,15 @@
-word_arr = [['s','r','e','y'],
-['u','e','s','i'],
-['b','n','i','u'],
-['e','n','a','h']]
+from Trie import Trie
 
-words = set()
-for word in open('wordlist.txt').readlines():
-    words.add(word[:-1])
+class Word_Blitz_Player:
+    def __init__(self):
+        self.setup_trie()
 
-print(words)
+    def setup_trie(self):
+        self.trie = Trie('')
+        for word in open('wordlist.txt').readlines():
+            self.trie.add(word[:-1])
+
+
+
+if __name__ == '__main__':
+    self.word_blitz_player = Word_Blitz_Player('sreyuesibniuenah')
