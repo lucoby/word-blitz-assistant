@@ -9,6 +9,12 @@ class Word_Blitz_Player:
         for word in open('wordlist.txt').readlines():
             self.trie.add(word[:-1])
 
+    def set_word(self, word):
+      self.word = word
+
+    def to_word_arr(self):
+      self.word_arr = [[c for c in self.word[4*i:4*i+4]] for i in range(4)]
+
 
 
 if __name__ == '__main__':
