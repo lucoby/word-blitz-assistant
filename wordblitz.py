@@ -1,4 +1,8 @@
+import pyautogui
+import time
+
 from Trie import Trie
+
 
 class Word_Blitz_Player:
     def __init__(self):
@@ -63,6 +67,11 @@ class Word_Blitz_Player:
     def enter_words(self):
         pass
 
+    def enter_word(self, positions):
+        pass
+
+    def move_to(self, position):
+        pyautogui.moveTo(self.positions[position][0], self.positions[position][1])
 
 if __name__ == '__main__':
     word_blitz_player = Word_Blitz_Player()
