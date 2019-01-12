@@ -6,11 +6,21 @@ class Word_Blitz_Player:
         self.r = 4
         self.c = 4
         self.found_words = set()
+        self.setup_positions(566, 458, 991, 878)
+        self.wait = 0.05
 
     def setup_trie(self):
         self.trie = Trie('')
         for word in open('wordlist.txt').readlines():
             self.trie.add(word[:-1])
+
+    def setup_positions(self, x0, y0, x1, y1):
+        num_steps = 4
+        x_step_size = (x1 - x0) / num_steps
+        y_step_size = (y1 - y0) / num_steps
+        x_half_step = x_step_size / 2
+        y_half_step = y_step_size / 2
+        self.positions = [(int(x0 + x_half_step + i*x_step_size), int(y0 + y_half_step + j * y_step_size)) for j in range(4) for i in range(4)]
 
     def main(self, word):
         self.set_word(word)
@@ -47,6 +57,10 @@ class Word_Blitz_Player:
 
                 if self.trie.has_prefix(new_prefix):
                     self.__find_words_helper__(i, j, new_prefix, self.__explore__(i, j, explored))
+
+    def enter_words(self):
+        pass
+
 
 if __name__ == '__main__':
     word_blitz_player = Word_Blitz_Player()
