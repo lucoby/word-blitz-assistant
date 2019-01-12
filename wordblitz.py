@@ -68,7 +68,13 @@ class Word_Blitz_Player:
         pass
 
     def enter_word(self, positions):
-        pass
+        self.move_to(positions[0])
+        pyautogui.mouseDown()
+        for i in positions[1:]:
+            self.moveTo(i)
+            time.sleep(self.wait)
+        pyautogui.mouseUp()
+        time.sleep(self.wait)
 
     def move_to(self, position):
         pyautogui.moveTo(self.positions[position][0], self.positions[position][1])
