@@ -12,7 +12,7 @@ class Word_Blitz_Player:
         self.found_words = set()
         self.found_words_positions = []
         self.setup_positions(566, 458, 991, 878)
-        self.wait = 0.05
+        self.wait = 0.03
 
     def setup_trie(self):
         self.trie = Trie('')
@@ -30,6 +30,7 @@ class Word_Blitz_Player:
         self.set_word(word)
         self.to_word_arr()
         self.find_words()
+        self.enter_words()
 
     def set_word(self, word):
         self.word = word.lower()
@@ -65,13 +66,14 @@ class Word_Blitz_Player:
                     self.__find_words_helper__(i, j, new_prefix, new_positions, self.__explore__(i, j, explored))
 
     def enter_words(self):
-        pass
+        for word_positions in self.found_words_positions:
+            self.enter_word(word_positions)
 
     def enter_word(self, positions):
         self.move_to(positions[0])
         pyautogui.mouseDown()
         for i in positions[1:]:
-            self.moveTo(i)
+            self.move_to(i)
             time.sleep(self.wait)
         pyautogui.mouseUp()
         time.sleep(self.wait)
@@ -81,4 +83,5 @@ class Word_Blitz_Player:
 
 if __name__ == '__main__':
     word_blitz_player = Word_Blitz_Player()
-    word_blitz_player.main('ORGOIRLSELITIBNN')
+    word_blitz_player.main('ZEACONITDAAOTSLU')
+    # print(len(word_blitz_player.found_words))
