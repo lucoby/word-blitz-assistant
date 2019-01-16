@@ -1,0 +1,5 @@
+PyAutoGUI==0.9.41
+pyscreenshot==0.5.1
+pytesseract==0.2.6
+pytest==3.3.2
+python3-xlib==0.15
